@@ -59,9 +59,12 @@
     </div>
 
     <div class="border-t border-white/10">
-        <div class="container-page flex flex-col gap-1 py-5 text-sm text-white/65 sm:flex-row sm:items-center sm:justify-between">
+        <div class="container-page flex flex-col items-center gap-2 py-5 text-center text-sm text-white/65 sm:flex-row sm:justify-between sm:gap-4 sm:text-left">
             <p>&copy; {{ \App\Support\Bn::num((string) now()->year) }} ব্লাডবন্ড — {{ config('bandhan.subtitle_bn') }}</p>
-            <p>পৃষ্ঠপোষকতায় <span class="font-medium text-white/90" lang="en">{{ \App\Support\Site::sponsor() }}</span></p>
+            <p lang="en">
+                Designed and Developed By
+                <a href="https://digitalwebars.com/" target="_blank" rel="noopener" class="font-medium whitespace-nowrap text-white/90 hover:text-white hover:underline">Digital Webars</a>
+            </p>
         </div>
     </div>
 </footer>

@@ -6,7 +6,7 @@
             </x-ui.field>
         </x-ui.card>
 
-        <x-ui.card title="পৃষ্ঠপোষক" description="ফুটারের “পৃষ্ঠপোষকতায়” লাইন আর আমাদের সম্পর্কে পাতায় শুধু নাম দেখায় — কোনো লিংক নয়।">
+        <x-ui.card title="পৃষ্ঠপোষক" description="সাইটের তথ্য ফাইলে (llms.txt) শুধু নাম দেখায় — কোনো লিংক নয়। ফুটারে আর দেখায় না।">
             <x-ui.field label="পৃষ্ঠপোষকের নাম" for="s-sponsor" required error="sponsor_name">
                 <x-ui.input compact id="s-sponsor" wire:model="sponsor_name" error="sponsor_name" lang="en" />
             </x-ui.field>
