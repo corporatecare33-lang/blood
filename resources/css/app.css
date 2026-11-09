@@ -1,0 +1,267 @@
+/*
+ | Anek Bangla, instanced from @fontsource-variable/anek-bangla to the axes the
+ | design uses (wght 500–800, wdth 80–100) — 448 KB → 205 KB for Bengali.
+ | Regenerate with fontTools.varLib.instancer if those ranges change.
+ */
+@font-face {
+    font-family: 'Anek Bangla Variable';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500 800;
+    font-stretch: 80% 100%;
+    src: url('../fonts/anek-bangla-bengali-display.woff2') format('woff2-variations');
+    unicode-range: U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1, U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+20B9, U+25CC, U+A8F1;
+}
+@font-face {
+    font-family: 'Anek Bangla Variable';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500 800;
+    font-stretch: 80% 100%;
+    src: url('../fonts/anek-bangla-latin-display.woff2') format('woff2-variations');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/*
+ | Bengali digits ০–৯ only, for body text. Hind Siliguri draws "১" as a tiny
+ | broken stroke, so "১৮" reads as "৮". Subset of Noto Sans Bengali (OFL,
+ | @fontsource-variable/noto-sans-bengali 5.3.0) instanced to wght 400–800 — 3 KB.
+ */
+@font-face {
+    font-family: 'Bangla Digits';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400 800;
+    src: url('../fonts/noto-sans-bengali-digits.woff2') format('woff2-variations');
+    unicode-range: U+09E6-09EF;
+}
+@import '@fontsource/hind-siliguri/400.css';
+@import '@fontsource/hind-siliguri/500.css';
+@import '@fontsource/hind-siliguri/600.css';
+@import '@fontsource/hind-siliguri/700.css';
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/livewire/src/Features/SupportPagination/views/*.blade.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../../app/**/*.php';
+
+/*
+ | BloodBond design tokens — see CLAUDE.md §5. Visual direction: docs/reference/mobile-app-mockup.jpg
+ | (red app bar, blush canvas, white rounded cards, red-outlined group chips).
+ | Semantic names follow shadcn (primary, muted, border, ring…).
+ */
+@theme {
+    --font-sans: 'Bangla Digits', 'Hind Siliguri', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Anek Bangla Variable', 'Hind Siliguri', ui-sans-serif, system-ui, sans-serif;
+
+    --color-crimson: #cf1f2a;
+    --color-crimson-deep: #a5141e;
+    --color-crimson-soft: #fdecec;
+    --color-ink: #1f1416;
+    --color-ink-soft: #5e4f52;
+    --color-paper: #ffffff;
+    --color-blush: #f7f0ef;
+    --color-mist: #f1e8e7;
+    --color-marigold: #f4b400;
+    --color-leaf: #1b7a47;
+    --color-leaf-soft: #e5f3ea;
+
+    --color-background: var(--color-blush);
+    --color-foreground: var(--color-ink);
+    --color-card: var(--color-paper);
+    --color-primary: var(--color-crimson);
+    --color-primary-hover: var(--color-crimson-deep);
+    --color-primary-foreground: #ffffff;
+    --color-muted: var(--color-mist);
+    --color-muted-foreground: var(--color-ink-soft);
+    --color-border: #eadfdd;
+    --color-input: #d8cac8;
+    --color-ring: var(--color-marigold);
+    --color-destructive: #b42318;
+
+    --text-2xs: 0.8125rem;
+
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+
+    --shadow-card: 0 1px 2px rgb(60 20 20 / 0.06), 0 6px 18px -6px rgb(120 30 30 / 0.12);
+    --shadow-panel: 0 1px 2px rgb(60 20 20 / 0.08), 0 18px 40px -14px rgb(165 20 30 / 0.35);
+    --shadow-bar: 0 -1px 0 rgb(60 20 20 / 0.06), 0 -8px 24px -12px rgb(60 20 20 / 0.18);
+
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+    /* Admin panel (shadcn "inset sidebar" layout): a tinted frame around a white workspace. */
+    --color-sidebar: #f6efee;
+    --color-sidebar-accent: #ece0de;
+    --color-sidebar-border: #e6d8d6;
+    --shadow-xs: 0 1px 2px rgb(60 20 20 / 0.05);
+    --shadow-pop: 0 4px 6px -2px rgb(60 20 20 / 0.06), 0 12px 32px -8px rgb(60 20 20 / 0.22);
+}
+
+/* <html class="sidebar-collapsed"> — set by the admin layout, read by `collapsed:` utilities. */
+@custom-variant collapsed (&:where(.sidebar-collapsed *));
+
+@layer base {
+    html {
+        -webkit-text-size-adjust: 100%;
+        scroll-padding-top: 5rem;
+    }
+
+    body {
+        @apply bg-background text-foreground font-sans antialiased;
+        line-height: 1.65;
+    }
+
+    h1, h2, h3, h4 {
+        @apply font-display text-ink;
+        font-stretch: 100%;
+        line-height: 1.1;
+        text-wrap: balance;
+    }
+
+    p { text-wrap: pretty; }
+
+    :lang(bn) { line-height: 1.75; }
+
+    :focus-visible {
+        outline: 3px solid var(--color-ring);
+        outline-offset: 2px;
+        border-radius: 2px;
+    }
+
+    [x-cloak] { display: none !important; }
+
+    /* Until motion.js sets GSAP start states (see the inline script in the layout). */
+    .motion:not(.motion-ready) :is([data-hero-media], [data-hero-line], [data-hero-panel], [data-intro], [data-reveal], [data-reveal-stagger] > *, [data-draw]) {
+        visibility: hidden;
+    }
+
+    ::selection { background: var(--color-crimson); color: #fff; }
+}
+
+@layer components {
+    .container-page {
+        @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+    }
+
+    .section {
+        @apply py-8 md:py-14;
+    }
+
+    /* White surface used for every content block — the mockup's card. */
+    .card {
+        @apply rounded-xl bg-card shadow-card;
+    }
+
+    /* Bottom tab bar height + iOS home indicator, so content never hides under it. */
+    .pb-tabbar {
+        padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+    }
+
+    .prose-bandhan {
+        @apply max-w-[68ch] text-[1.0625rem] text-ink;
+    }
+    .prose-bandhan p + p { @apply mt-4; }
+    .prose-bandhan h2 { @apply mt-12 mb-3 text-2xl font-bold first:mt-0; }
+    .prose-bandhan ul { @apply mt-3 list-disc space-y-1.5 pl-5 marker:text-crimson; }
+    .prose-bandhan a { @apply font-medium text-crimson underline underline-offset-2 hover:text-crimson-deep; }
+
+    /* Blood request form (livewire/requests/create-form): numbered steps in one panel. */
+    .rq-step {
+        @apply grid gap-5 border-b border-border px-5 py-6 last:border-b-0 sm:py-7 sm:pr-7 sm:pl-[4.25rem];
+    }
+    .rq-step-title {
+        @apply float-left flex w-full items-center gap-3 font-display text-lg font-bold text-ink sm:-ml-11 sm:text-xl;
+    }
+    .rq-step-no {
+        @apply flex size-8 shrink-0 items-center justify-center rounded-full bg-crimson-soft font-display text-base font-bold text-crimson;
+    }
+    .rq-chip {
+        @apply flex h-14 flex-col items-center justify-center gap-0.5 rounded-lg border-2 border-crimson/25 bg-white text-center leading-tight text-crimson transition-colors duration-150;
+    }
+    label:hover > .rq-chip { @apply border-crimson bg-crimson-soft; }
+    input:checked + .rq-chip { @apply border-crimson bg-crimson text-white; }
+    input:focus-visible + .rq-chip { @apply outline-3 outline-offset-2 outline-marigold; }
+    /* Preview slot the person has not filled yet. */
+    .rq-blank { @apply rounded bg-mist px-1 font-normal text-ink-soft/70; }
+
+    /* ---- Admin panel ---------------------------------------------------- */
+    /* shadcn Card: bordered white surface inside the white workspace. */
+    .admin-card {
+        @apply rounded-xl border border-border bg-card shadow-xs;
+    }
+
+    /* shadcn Table */
+    .ui-table {
+        @apply w-full caption-bottom text-left text-sm;
+    }
+    .ui-table thead tr {
+        @apply border-b border-border;
+    }
+    .ui-table th {
+        @apply h-10 px-3 align-middle font-medium whitespace-nowrap text-muted-foreground first:pl-4 last:pr-4;
+    }
+    .ui-table td {
+        @apply px-3 py-3 align-middle first:pl-4 last:pr-4;
+    }
+    .ui-table tbody tr {
+        @apply border-b border-border transition-colors last:border-b-0 hover:bg-muted/40 data-[selected=true]:bg-crimson-soft/50;
+    }
+
+    /* shadcn Checkbox, styled on the native input so it stays keyboard- and form-friendly. */
+    .ui-checkbox {
+        @apply size-4 shrink-0 cursor-pointer appearance-none rounded-[4px] border border-input bg-white shadow-xs transition-colors checked:border-crimson checked:bg-crimson indeterminate:border-crimson indeterminate:bg-crimson;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 0.75rem;
+    }
+    .ui-checkbox:checked {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    }
+    .ui-checkbox:indeterminate {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
+    }
+
+    /* Dropdown menu item */
+    .ui-menu-item {
+        @apply flex w-full cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm text-ink outline-none hover:bg-muted focus-visible:bg-muted [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-ink-soft;
+    }
+    .ui-menu-item.is-danger {
+        @apply text-destructive hover:bg-crimson-soft focus-visible:bg-crimson-soft [&_svg]:text-destructive;
+    }
+
+    /* Blood-group labels (A+, O−…). */
+    .group-glyph {
+        /* Hind Siliguri's round O keeps "O+" from reading as "0+". */
+        @apply font-sans font-bold;
+        letter-spacing: 0;
+        line-height: 1;
+    }
+
+    /*
+     | Donor card's group mark: a blood drop holding the group label. The drop is a
+     | square with one sharp corner, turned 45° so the point faces up; the label sits
+     | in its round part, a little below the box centre. Muted when the donor can't give now.
+     */
+    .blood-drop {
+        @apply relative flex size-14 shrink-0 items-center justify-center pt-3 text-white;
+    }
+    .blood-drop::before {
+        content: '';
+        @apply absolute top-3 left-1.5 size-11 rotate-45 rounded-[0_50%_50%_50%] bg-crimson;
+    }
+    .blood-drop > * { @apply relative; }
+    .blood-drop.is-muted { @apply text-ink-soft; }
+    .blood-drop.is-muted::before { @apply bg-mist; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
