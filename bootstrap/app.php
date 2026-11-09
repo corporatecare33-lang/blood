@@ -12,6 +12,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Hosting terminates TLS at a proxy; trust its X-Forwarded-* headers so URLs stay https.
+        $middleware->trustProxies(at: '*');
         $middleware->alias(['admin' => \App\Http\Middleware\EnsureAdmin::class]);
         // The admin panel has its own sign-in page; admins who are already signed in go straight to it.
         $middleware->redirectGuestsTo(fn (Request $request) => $request->is('admin', 'admin/*') ? route('admin.login') : route('login'));
