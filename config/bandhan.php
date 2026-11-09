@@ -2,12 +2,12 @@
 
 // Verified organisation facts. See CLAUDE.md §2 before adding anything here.
 return [
-    'name' => 'BloodBond',
-    'name_bn' => 'ব্লাডবন্ড',
+    'name' => 'RoktoDoot',
+    'name_bn' => 'রক্তদূত',
     'tagline_bn' => 'রক্ত দিন জীবন বাঁচান। রক্ত নিন নিজে বাঁচুন।',
     'subtitle_bn' => 'স্বেচ্ছায় রক্তদাতাদের সংগঠন',
-    'description' => 'BloodBond is a free, voluntary blood donor network in Bangladesh that connects people who need blood with donors by blood group and location.',
-    'description_bn' => 'ব্লাডবন্ড বাংলাদেশের একটি বিনামূল্যের স্বেচ্ছাসেবী রক্তদাতা নেটওয়ার্ক — রক্তের গ্রুপ ও এলাকা দিয়ে রক্তপ্রার্থীর সাথে রক্তদাতার যোগাযোগ করিয়ে দেয়।',
+    'description' => 'RoktoDoot is a free, voluntary blood donor network in Bangladesh that connects people who need blood with donors by blood group and location.',
+    'description_bn' => 'রক্তদূত বাংলাদেশের একটি বিনামূল্যের স্বেচ্ছাসেবী রক্তদাতা নেটওয়ার্ক — রক্তের গ্রুপ ও এলাকা দিয়ে রক্তপ্রার্থীর সাথে রক্তদাতার যোগাযোগ করিয়ে দেয়।',
 
     'email' => 'bandhanblood24@gmail.com',
 
@@ -35,7 +35,7 @@ return [
     ],
 
     'admin' => [
-        'name' => env('ADMIN_NAME', 'BloodBond Admin'),
+        'name' => env('ADMIN_NAME', 'RoktoDoot Admin'),
         'mobile' => env('ADMIN_MOBILE'),
         'password' => env('ADMIN_PASSWORD'),
     ],

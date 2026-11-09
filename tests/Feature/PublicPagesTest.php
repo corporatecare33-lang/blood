@@ -61,7 +61,7 @@ class PublicPagesTest extends TestCase
     {
         $this->get('/sitemap.xml')->assertOk()->assertHeader('Content-Type', 'application/xml; charset=UTF-8')->assertSee(route('about'));
         $this->get('/robots.txt')->assertOk()->assertSee('User-agent: *');
-        $this->get('/llms.txt')->assertOk()->assertSee('# BloodBond');
+        $this->get('/llms.txt')->assertOk()->assertSee('# RoktoDoot');
     }
 
     public function test_guests_cannot_see_donor_numbers(): void

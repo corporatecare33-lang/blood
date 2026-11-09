@@ -1,4 +1,4 @@
-{{-- BloodBond's five donation conditions (আমাদের শর্তসমূহ), verbatim from the original site. --}}
+{{-- RoktoDoot's five donation conditions (আমাদের শর্তসমূহ), verbatim from the original site. --}}
 @props(['heading' => true])
 
 @php

@@ -24,7 +24,7 @@
             <button type="button" x-on:click="open = true" class="flex size-11 items-center justify-center rounded-lg hover:bg-white/10" aria-controls="site-drawer" x-bind:aria-expanded="open">
                 <x-lucide-menu class="size-6" aria-hidden="true" /><span class="sr-only">মেনু খুলুন</span>
             </button>
-            <a href="{{ route('home') }}" wire:navigate class="justify-self-center rounded-full border border-white/70 px-5 py-1 font-display text-lg font-bold" aria-label="ব্লাডবন্ড — হোম">ব্লাডবন্ড</a>
+            <a href="{{ route('home') }}" wire:navigate class="justify-self-center rounded-full border border-white/70 px-5 py-1 font-display text-lg font-bold" aria-label="রক্তদূত — হোম">রক্তদূত</a>
             <a href="{{ route('donors.search') }}" wire:navigate class="flex size-11 items-center justify-center rounded-lg hover:bg-white/10">
                 <x-lucide-search class="size-6" aria-hidden="true" /><span class="sr-only">ডোনার খুঁজুন</span>
             </a>
@@ -32,7 +32,7 @@
             <button type="button" x-on:click="history.length > 1 ? history.back() : Livewire.navigate('{{ route('home') }}')" class="flex size-11 items-center justify-center rounded-lg hover:bg-white/10">
                 <x-lucide-chevron-left class="size-7" aria-hidden="true" /><span class="sr-only">ফিরে যান</span>
             </button>
-            <p class="truncate text-center font-display text-lg font-bold">{{ $seo->appBar ?? 'ব্লাডবন্ড' }}</p>
+            <p class="truncate text-center font-display text-lg font-bold">{{ $seo->appBar ?? 'রক্তদূত' }}</p>
             <button type="button" x-on:click="open = true" class="flex size-11 items-center justify-center rounded-lg hover:bg-white/10" aria-controls="site-drawer" x-bind:aria-expanded="open">
                 <x-lucide-menu class="size-6" aria-hidden="true" /><span class="sr-only">মেনু খুলুন</span>
             </button>
@@ -41,10 +41,10 @@
 
     {{-- Desktop bar --}}
     <div class="container-page hidden h-[4.5rem] items-center gap-6 lg:flex">
-        <a href="{{ route('home') }}" wire:navigate class="-ml-1 shrink-0 rounded-md p-1" aria-label="ব্লাডবন্ড — হোম">
+        <a href="{{ route('home') }}" wire:navigate class="-ml-1 shrink-0 rounded-md p-1" aria-label="রক্তদূত — হোম">
             <picture>
                 <source srcset="/images/brand/bandhan-logo-240.webp 1x, /images/brand/bandhan-logo-480.webp 2x" type="image/webp">
-                <img src="/images/brand/bandhan-logo-240.png" alt="ব্লাডবন্ড" width="240" height="119" class="h-12 w-auto">
+                <img src="/images/brand/bandhan-logo-240.png" alt="রক্তদূত" width="240" height="119" class="h-12 w-auto">
             </picture>
         </a>
         <nav aria-label="প্রধান মেনু" class="ml-auto">
@@ -83,7 +83,7 @@
                 <div class="flex items-center justify-between bg-crimson px-4 py-4">
                     <picture>
                         <source srcset="/images/brand/bandhan-logo-240.webp 1x, /images/brand/bandhan-logo-480.webp 2x" type="image/webp">
-                        <img src="/images/brand/bandhan-logo-240.png" alt="ব্লাডবন্ড" width="240" height="119" class="h-11 w-auto">
+                        <img src="/images/brand/bandhan-logo-240.png" alt="রক্তদূত" width="240" height="119" class="h-11 w-auto">
                     </picture>
                     <button type="button" x-on:click="open = false" class="flex size-10 items-center justify-center rounded-lg text-white hover:bg-white/10">
                         <x-lucide-x class="size-6" aria-hidden="true" /><span class="sr-only">মেনু বন্ধ করুন</span>

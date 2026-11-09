@@ -113,7 +113,7 @@
 
         <label class="flex cursor-pointer items-start gap-3">
             <input type="checkbox" wire:model="agree" class="mt-1 size-5 shrink-0 accent-crimson" @error('agree') aria-invalid="true" aria-describedby="agree-error" @enderror>
-            <span>আমি ব্লাডবন্ডের শর্তসমূহ ও <a href="{{ route('terms') }}" wire:navigate class="font-medium text-crimson underline">ব্যবহারের শর্তাবলি</a>-তে রাজি</span>
+            <span>আমি রক্তদূতের শর্তসমূহ ও <a href="{{ route('terms') }}" wire:navigate class="font-medium text-crimson underline">ব্যবহারের শর্তাবলি</a>-তে রাজি</span>
         </label>
         @error('agree')
             <p id="agree-error" class="-mt-2 text-sm font-medium text-destructive">{{ $message }}</p>

@@ -1,4 +1,4 @@
-@php(\App\Support\Seo::make()->title($title)->appBar('ব্লাডবন্ড')->description($message)->noindex()->withoutCanonical())
+@php(\App\Support\Seo::make()->title($title)->appBar('রক্তদূত')->description($message)->noindex()->withoutCanonical())
 <x-layouts.app>
     <section class="container-page max-w-3xl! py-10 md:py-20">
         <div class="card grid items-center gap-6 p-6 sm:p-10 md:grid-cols-[auto_1fr] md:gap-10">
@@ -19,7 +19,7 @@
                     <li><a href="{{ route('donors.search') }}" wire:navigate class="text-crimson underline-offset-2 hover:underline">ডোনার খুঁজুন</a></li>
                     <li><a href="{{ route('register') }}" wire:navigate class="text-crimson underline-offset-2 hover:underline">ডোনার হিসেবে যুক্ত হন</a></li>
                     <li><a href="{{ route('requests.create') }}" wire:navigate class="text-crimson underline-offset-2 hover:underline">রক্তের অনুরোধ পোস্ট করুন</a></li>
-                    <li><a href="{{ route('about') }}" wire:navigate class="text-crimson underline-offset-2 hover:underline">ব্লাডবন্ড সম্পর্কে</a></li>
+                    <li><a href="{{ route('about') }}" wire:navigate class="text-crimson underline-offset-2 hover:underline">রক্তদূত সম্পর্কে</a></li>
                 </ul>
             </nav>
         @endif

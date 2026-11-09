@@ -1,4 +1,4 @@
-# CLAUDE.md — BloodBond (ব্লাডবন্ড) Blood Donor Platform
+# CLAUDE.md — RoktoDoot (রক্তদূত) Blood Donor Platform
 
 Read this file fully before touching code. It is the single source of truth for
 facts, content, architecture and design. **If a fact is not in this file, in the
@@ -10,8 +10,8 @@ database seeders, or in `database/data/`, do not invent it.** Ask instead.
 
 A Laravel rebuild of **https://www.bandhanblood.com/** (originally an Angular SPA
 backed by `https://a.bandhanblood.com/api/*`). The service was renamed
-**BloodBond (ব্লাডবন্ড)** by the owner on 2026-11-09 (formerly Bandhan / বন্ধন).
-BloodBond is a free, voluntary blood
+**RoktoDoot (রক্তদূত)** by the owner on 2026-11-09 (formerly BloodBond / ব্লাডবন্ড, before that Bandhan / বন্ধন).
+RoktoDoot is a free, voluntary blood
 donor network in Bangladesh: donors register with their blood group and location;
 people who need blood search donors (login required) or post a blood request.
 
@@ -23,7 +23,7 @@ ideas (public blood-request board, tips, terms/privacy). Do not copy its design.
 
 | Fact | Value | Source |
 |---|---|---|
-| Name | **BloodBond / ব্লাডবন্ড** (Bangla UI uses ব্লাডবন্ড). Formerly Bandhan / বন্ধন. Internal ids (`config/bandhan.php`, DB `bandhan_blood`, logo file names) intentionally keep `bandhan`. | owner, 2026-11-09 |
+| Name | **RoktoDoot / রক্তদূত** (Bangla UI uses রক্তদূত). Formerly BloodBond / ব্লাডবন্ড (same day), and Bandhan / বন্ধন before that. OG image: `public/images/og/roktodoot-share.jpg`. Internal ids (`config/bandhan.php`, DB `bandhan_blood`, logo file names) intentionally keep `bandhan`. | owner, 2026-11-09 |
 | Logo tagline | রক্ত দিন জীবন বাঁচান। রক্ত নিন নিজে বাঁচুন। (স্বেচ্ছায় রক্তদাতাদের সংগঠন) | logo image |
 | Contact email | bandhanblood24@gmail.com | site footer |
 | Facebook | **Removed at the owner's request (2026-11-09).** Do not link Facebook anywhere. | owner |
@@ -34,8 +34,8 @@ ideas (public blood-request board, tips, terms/privacy). Do not copy its design.
 | iPhone app | **Not published.** Source links to a dummy App Store id (`id1234567890`). Do NOT link it. | `data/data.json` |
 | Hero claim | "Voluntary blood donation-based platform to connect blood searchers with donors" | hero |
 | Claim | Connects donors and searchers using SMS; find by blood type, location, donor history | hero |
-| What is BloodBond | "An automated blood service that connects blood searchers with voluntary donors in a moment through SMS. Always a free service for all." | home |
-| Why BloodBond | 100% automated · Always free · 24×7 service · All data is secured | home |
+| What is RoktoDoot | "An automated blood service that connects blood searchers with voluntary donors in a moment through SMS. Always a free service for all." | home |
+| Why RoktoDoot | 100% automated · Always free · 24×7 service · All data is secured | home |
 | Conditions (আমাদের শর্তসমূহ) | 5 rules — see `config/bandhan.php` → `conditions` | `data/data.json` |
 | Occupation options | Student, Others | `data/data.json` |
 | Gender options | Male, Female, Others | `data/data.json` |
@@ -52,7 +52,7 @@ iOS link. They were replaced with real copy derived from the facts above.
 
 Medical guidance on `/tips` follows WHO *Blood donor selection* (2012) general
 criteria and always tells readers the blood bank makes the final screening
-decision. Values used: age 18–65 (BloodBond's own rule: minimum 18), weight ≥ 50 kg,
+decision. Values used: age 18–65 (RoktoDoot's own rule: minimum 18), weight ≥ 50 kg,
 haemoglobin ≥ 12.0 g/dL (women) / ≥ 13.0 g/dL (men), whole-blood interval
 ≥ 12 weeks (men) / ≥ 16 weeks (women). Do not add other medical claims.
 
@@ -99,12 +99,12 @@ model and the mental load. Livewire + `wire:navigate` already gives SPA behaviou
 ## 5. Design system — Bangla-first mobile app look
 
 **Visual reference: `docs/reference/mobile-app-mockup.jpg`** (user-approved, 2026-11-09).
-Decisions confirmed with the user: keep our own brand (BloodBond, formerly Bandhan) (the mockup's "মধুখালী নিউজ"
+Decisions confirmed with the user: keep our own brand (RoktoDoot, formerly BloodBond / Bandhan) (the mockup's "মধুখালী নিউজ"
 pill is NOT our brand) · no WhatsApp banner (no verified number — it is an
 "urgent request" banner linking to `/blood-requests/new`) · show area names, never
 distances (no coordinates exist) · Bangla-first UI with a mobile bottom tab bar.
 
-Shell: red app bar on mobile (home: menu · "ব্লাডবন্ড" pill · search; other pages:
+Shell: red app bar on mobile (home: menu · "রক্তদূত" pill · search; other pages:
 back · page title from `Seo::appBar()` · menu) + slide-in drawer; desktop gets a
 red header with logo + nav. Bottom tab bar `components/site/tab-bar` (হোম · ডোনার ·
 রিকোয়েস্ট · প্রোফাইল), `lg:hidden`, body has `.pb-tabbar`.

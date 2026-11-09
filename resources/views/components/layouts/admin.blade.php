@@ -5,7 +5,7 @@
 --}}
 @props(['title', 'description' => null])
 @php
-    \App\Support\Seo::make()->title($title.' — অ্যাডমিন')->description('ব্লাডবন্ড অ্যাডমিন প্যানেল।')->noindex();
+    \App\Support\Seo::make()->title($title.' — অ্যাডমিন')->description('রক্তদূত অ্যাডমিন প্যানেল।')->noindex();
     $user = auth()->user();
     $openRequests = \App\Models\BloodRequest::active()->count();
 

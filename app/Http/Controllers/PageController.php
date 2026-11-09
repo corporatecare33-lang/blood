@@ -11,7 +11,7 @@ class PageController extends Controller
     public function home(): View
     {
         Seo::make()
-            ->description('রক্তের গ্রুপ ও জেলা দিয়ে বাংলাদেশে স্বেচ্ছাসেবী রক্তদাতা খুঁজুন, রক্তের অনুরোধ পোস্ট করুন অথবা ডোনার হিসেবে যুক্ত হন। ব্লাডবন্ড সবার জন্য বিনামূল্যে।')
+            ->description('রক্তের গ্রুপ ও জেলা দিয়ে বাংলাদেশে স্বেচ্ছাসেবী রক্তদাতা খুঁজুন, রক্তের অনুরোধ পোস্ট করুন অথবা ডোনার হিসেবে যুক্ত হন। রক্তদূত সবার জন্য বিনামূল্যে।')
             ->canonical(url('/'));
 
         return view('pages.home', [
@@ -24,9 +24,9 @@ class PageController extends Controller
     {
         Seo::make()
             ->title('আমাদের সম্পর্কে')
-            ->description('ব্লাডবন্ড বাংলাদেশের একটি বিনামূল্যের স্বেচ্ছাসেবী রক্তদাতা নেটওয়ার্ক। কীভাবে কাজ করে, কারা রক্ত দিতে পারেন এবং ডোনারের তথ্য কীভাবে সুরক্ষিত থাকে জানুন।')
+            ->description('রক্তদূত বাংলাদেশের একটি বিনামূল্যের স্বেচ্ছাসেবী রক্তদাতা নেটওয়ার্ক। কীভাবে কাজ করে, কারা রক্ত দিতে পারেন এবং ডোনারের তথ্য কীভাবে সুরক্ষিত থাকে জানুন।')
             ->breadcrumbs(['আমাদের সম্পর্কে' => route('about')])
-            ->schema(['@type' => 'AboutPage', 'url' => route('about'), 'name' => 'ব্লাডবন্ড সম্পর্কে']);
+            ->schema(['@type' => 'AboutPage', 'url' => route('about'), 'name' => 'রক্তদূত সম্পর্কে']);
 
         return view('pages.about', [
             'sections' => SiteCache::about(),
@@ -38,7 +38,7 @@ class PageController extends Controller
     {
         Seo::make()
             ->title('গ্যালারি')
-            ->description('ব্লাডবন্ডের রক্তদান কর্মসূচি ও স্বেচ্ছাসেবী কার্যক্রমের ছবি।')
+            ->description('রক্তদূতের রক্তদান কর্মসূচি ও স্বেচ্ছাসেবী কার্যক্রমের ছবি।')
             ->breadcrumbs(['গ্যালারি' => route('gallery')]);
 
         return view('pages.gallery', ['items' => SiteCache::gallery()]);
@@ -69,7 +69,7 @@ class PageController extends Controller
     {
         Seo::make()
             ->title('ব্যবহারের শর্তাবলি')
-            ->description('ডোনার বা রক্তপ্রার্থী হিসেবে ব্লাডবন্ড ব্যবহারের নিয়মাবলি।')
+            ->description('ডোনার বা রক্তপ্রার্থী হিসেবে রক্তদূত ব্যবহারের নিয়মাবলি।')
             ->breadcrumbs(['ব্যবহারের শর্তাবলি' => route('terms')]);
 
         return view('pages.terms');
@@ -79,7 +79,7 @@ class PageController extends Controller
     {
         Seo::make()
             ->title('গোপনীয়তা নীতি')
-            ->description('ব্লাডবন্ড ডোনারদের কোন তথ্য সংগ্রহ করে, কারা তা দেখতে পারেন এবং কীভাবে তা মুছে ফেলা যায়।')
+            ->description('রক্তদূত ডোনারদের কোন তথ্য সংগ্রহ করে, কারা তা দেখতে পারেন এবং কীভাবে তা মুছে ফেলা যায়।')
             ->breadcrumbs(['গোপনীয়তা নীতি' => route('privacy')]);
 
         return view('pages.privacy');

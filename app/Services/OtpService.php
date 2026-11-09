@@ -27,7 +27,7 @@ class OtpService
             'expires_at' => now()->addMinutes(self::TTL_MINUTES),
         ]);
 
-        $this->sms->send($mobile, "BloodBond: apnar verification code {$code}. ".self::TTL_MINUTES.' minute por meyad shesh hobe.');
+        $this->sms->send($mobile, "RoktoDoot: apnar verification code {$code}. ".self::TTL_MINUTES.' minute por meyad shesh hobe.');
     }
 
     /** Returns true and consumes the code when it matches. */

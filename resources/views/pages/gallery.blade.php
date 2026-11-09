@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <x-site.page-header title="গ্যালারি" intro="ব্লাডবন্ডের রক্তদান কর্মসূচি ও স্বেচ্ছাসেবী কার্যক্রমের ছবি।" />
+    <x-site.page-header title="গ্যালারি" intro="রক্তদূতের রক্তদান কর্মসূচি ও স্বেচ্ছাসেবী কার্যক্রমের ছবি।" />
 
     <div class="container-page section pt-5!">
         @if ($items->isEmpty())

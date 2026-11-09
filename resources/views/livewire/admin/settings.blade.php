@@ -16,7 +16,7 @@
     <x-ui.card title="আমাদের শর্তসমূহ" description="হোমপেজ, আমাদের সম্পর্কে, শর্তাবলি পাতা আর নিবন্ধন ফর্মে এই ক্রমে দেখায়।">
         <x-slot:action>
             @if ($conditionsChanged)
-                <x-admin.confirm action="restoreConditions()" :danger="false" confirm="ফিরিয়ে আনুন" title="মূল শর্তসমূহ ফিরিয়ে আনবেন?" message="ব্লাডবন্ডের মূল ৫টি শর্ত ফর্মে বসবে। সংরক্ষণ না করা পর্যন্ত সাইটে বদলাবে না।"
+                <x-admin.confirm action="restoreConditions()" :danger="false" confirm="ফিরিয়ে আনুন" title="মূল শর্তসমূহ ফিরিয়ে আনবেন?" message="রক্তদূতের মূল ৫টি শর্ত ফর্মে বসবে। সংরক্ষণ না করা পর্যন্ত সাইটে বদলাবে না।"
                     class="inline-flex h-8 items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium text-ink-soft hover:bg-muted hover:text-ink">
                     <x-lucide-rotate-ccw class="size-4" aria-hidden="true" />মূল শর্ত
                 </x-admin.confirm>

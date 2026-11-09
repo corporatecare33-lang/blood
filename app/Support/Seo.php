@@ -16,7 +16,7 @@ class Seo
     /** Error pages must not declare a canonical for the bad URL. */
     public bool $withCanonical = true;
 
-    public string $image = '/images/og/bloodbond-share.jpg';
+    public string $image = '/images/og/roktodoot-share.jpg';
 
     public string $type = 'website';
 
@@ -99,7 +99,7 @@ class Seo
 
     public function fullTitle(): string
     {
-        return $this->title ? "{$this->title} | ব্লাডবন্ড" : 'ব্লাডবন্ড — স্বেচ্ছায় রক্তদাতাদের সংগঠন | BloodBond';
+        return $this->title ? "{$this->title} | রক্তদূত" : 'রক্তদূত — স্বেচ্ছায় রক্তদাতাদের সংগঠন | RoktoDoot';
     }
 
     public function canonicalUrl(): string
@@ -117,8 +117,8 @@ class Seo
         $org = [
             '@type' => 'NGO',
             '@id' => url('/').'#organization',
-            'name' => 'BloodBond',
-            'alternateName' => 'ব্লাডবন্ড',
+            'name' => 'RoktoDoot',
+            'alternateName' => 'রক্তদূত',
             'url' => url('/'),
             'logo' => url('/images/brand/bandhan-logo-480.png'),
             'email' => Site::email(),
@@ -132,7 +132,7 @@ class Seo
                 '@type' => 'WebSite',
                 '@id' => url('/').'#website',
                 'url' => url('/'),
-                'name' => 'BloodBond',
+                'name' => 'RoktoDoot',
                 'inLanguage' => 'bn',
                 'publisher' => ['@id' => url('/').'#organization'],
             ],

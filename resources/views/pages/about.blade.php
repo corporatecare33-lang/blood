@@ -10,7 +10,7 @@
 
             <div class="grid gap-8 p-6 sm:p-8 md:p-12 lg:grid-cols-12 lg:items-end lg:gap-12">
                 <div class="lg:col-span-7">
-                    <p data-hero-line class="text-[0.9375rem] font-medium text-white/85">ব্লাডবন্ড, {{ config('bandhan.subtitle_bn') }}</p>
+                    <p data-hero-line class="text-[0.9375rem] font-medium text-white/85">রক্তদূত, {{ config('bandhan.subtitle_bn') }}</p>
                     <h1 data-hero-line class="mt-3 text-[clamp(1.6rem,8vw,3.5rem)] lg:text-[3.25rem] xl:text-[3.5rem] leading-[1.15] font-extrabold text-white">
                         <span class="block whitespace-nowrap">রক্ত দিন জীবন বাঁচান।</span>
                         <span class="block whitespace-nowrap">রক্ত নিন নিজে বাঁচুন।</span>
@@ -21,7 +21,7 @@
                             <x-lucide-droplet class="size-5 fill-white/90" />
                         </span>
                         @if ($donorCount > 0)
-                            <span><strong data-count-to="{{ $donorCount }}" class="font-display text-xl tabular-nums">{{ \App\Support\Bn::num($donorCount) }}</strong> জন রক্তযোদ্ধা এখন ব্লাডবন্ডে নিবন্ধিত</span>
+                            <span><strong data-count-to="{{ $donorCount }}" class="font-display text-xl tabular-nums">{{ \App\Support\Bn::num($donorCount) }}</strong> জন রক্তযোদ্ধা এখন রক্তদূতে নিবন্ধিত</span>
                         @else
                             <span>প্রথম রক্তযোদ্ধাদের একজন হোন</span>
                         @endif
@@ -29,7 +29,7 @@
                 </div>
 
                 @php($whyIcons = ['bot', 'hand-coins', 'clock-4', 'shield-check'])
-                <ul data-hero-panel class="grid grid-cols-2 gap-2.5 lg:col-span-5" aria-label="কেন ব্লাডবন্ড">
+                <ul data-hero-panel class="grid grid-cols-2 gap-2.5 lg:col-span-5" aria-label="কেন রক্তদূত">
                     @foreach (config('bandhan.why') as $i => $point)
                         <li class="flex flex-col gap-3 rounded-lg border border-white/15 bg-white/10 p-4 backdrop-blur-[2px] sm:p-5">
                             <span class="flex size-10 items-center justify-center rounded-full bg-white text-crimson" aria-hidden="true">

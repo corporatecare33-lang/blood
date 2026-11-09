@@ -10,7 +10,7 @@
             ['ডোনার টিপস', route('tips')],
             ['লগইন', route('login')],
         ],
-        'ব্লাডবন্ড' => [
+        'রক্তদূত' => [
             ['আমাদের সম্পর্কে', route('about')],
             ['গ্যালারি', route('gallery')],
             ['ব্যবহারের শর্তাবলি', route('terms')],
@@ -22,10 +22,10 @@
 <footer class="mt-10 bg-crimson-deep text-white">
     <div class="container-page grid gap-10 py-12 md:grid-cols-12 md:py-14">
         <div class="md:col-span-4">
-            <a href="{{ route('home') }}" wire:navigate class="inline-block rounded-md" aria-label="ব্লাডবন্ড — হোম">
+            <a href="{{ route('home') }}" wire:navigate class="inline-block rounded-md" aria-label="রক্তদূত — হোম">
                 <picture>
                     <source srcset="/images/brand/bandhan-logo-240.webp 1x, /images/brand/bandhan-logo-480.webp 2x" type="image/webp">
-                    <img src="/images/brand/bandhan-logo-240.png" alt="ব্লাডবন্ড" width="240" height="119" loading="lazy" class="h-auto w-44">
+                    <img src="/images/brand/bandhan-logo-240.png" alt="রক্তদূত" width="240" height="119" loading="lazy" class="h-auto w-44">
                 </picture>
             </a>
             <p class="mt-4 max-w-sm text-[0.9375rem] text-white/80">
@@ -60,7 +60,7 @@
 
     <div class="border-t border-white/10">
         <div class="container-page flex flex-col items-center gap-2 py-5 text-center text-sm text-white/65 sm:flex-row sm:justify-between sm:gap-4 sm:text-left">
-            <p>&copy; {{ \App\Support\Bn::num((string) now()->year) }} ব্লাডবন্ড — {{ config('bandhan.subtitle_bn') }}</p>
+            <p>&copy; {{ \App\Support\Bn::num((string) now()->year) }} রক্তদূত — {{ config('bandhan.subtitle_bn') }}</p>
             <p lang="en">
                 Designed and Developed By
                 <a href="https://digitalwebars.com/" target="_blank" rel="noopener" class="font-medium whitespace-nowrap text-white/90 hover:text-white hover:underline">Digital Webars</a>

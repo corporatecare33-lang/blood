@@ -22,7 +22,7 @@ class BloodRequestController extends Controller
         Seo::make()
             ->title('রক্তের অনুরোধ পোস্ট করুন')
             ->appBar('নতুন অনুরোধ')
-            ->description('রোগীর রক্ত দরকার? রক্তের গ্রুপ, হাসপাতাল আর সময় লিখে অনুরোধ পোস্ট করুন — কাছের ব্লাডবন্ড ডোনাররা আপনাকে কল করবেন।')
+            ->description('রোগীর রক্ত দরকার? রক্তের গ্রুপ, হাসপাতাল আর সময় লিখে অনুরোধ পোস্ট করুন — কাছের রক্তদূত ডোনাররা আপনাকে কল করবেন।')
             ->breadcrumbs(['রক্তের অনুরোধ' => route('requests.index'), 'নতুন অনুরোধ' => route('requests.create')]);
 
         return view('pages.requests.create');

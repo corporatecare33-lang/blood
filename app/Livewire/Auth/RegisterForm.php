@@ -112,7 +112,7 @@ class RegisterForm extends Component
         SiteCache::forgetDonorCount();
         Auth::login($user);
         session()->regenerate();
-        session()->flash('status', 'ব্লাডবন্ডে স্বাগতম, '.$user->name.'! আপনি এখন ডোনার তালিকায় আছেন।');
+        session()->flash('status', 'রক্তদূতে স্বাগতম, '.$user->name.'! আপনি এখন ডোনার তালিকায় আছেন।');
 
         return $this->redirectRoute('account', navigate: true);
     }

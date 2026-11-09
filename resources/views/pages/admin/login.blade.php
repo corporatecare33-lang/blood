@@ -1,4 +1,4 @@
-@php(\App\Support\Seo::make()->title('অ্যাডমিন লগইন')->description('ব্লাডবন্ড অ্যাডমিন প্যানেলে লগইন করুন।')->noindex())
+@php(\App\Support\Seo::make()->title('অ্যাডমিন লগইন')->description('রক্তদূত অ্যাডমিন প্যানেলে লগইন করুন।')->noindex())
 
 <x-layouts.admin-base body-class="bg-sidebar">
     <main id="content" tabindex="-1" class="flex min-h-dvh items-center justify-center px-4 py-10">
@@ -7,7 +7,7 @@
                 <div class="p-6 sm:p-10">
                     <a href="{{ route('home') }}" wire:navigate class="inline-flex items-center gap-2.5 rounded-lg md:hidden">
                         <span class="flex size-9 items-center justify-center rounded-lg bg-crimson text-white" aria-hidden="true"><x-lucide-droplet class="size-4 fill-white" /></span>
-                        <span class="font-display text-xl font-bold">ব্লাডবন্ড</span>
+                        <span class="font-display text-xl font-bold">রক্তদূত</span>
                     </a>
 
                     <div class="mt-8 md:mt-0">
@@ -34,7 +34,7 @@
                     <a href="{{ route('home') }}" wire:navigate class="relative self-start rounded-md">
                         <picture>
                             <source srcset="/images/brand/bandhan-logo-240.webp 1x, /images/brand/bandhan-logo-480.webp 2x" type="image/webp">
-                            <img src="/images/brand/bandhan-logo-240.png" alt="ব্লাডবন্ড — হোম" width="240" height="119" class="h-14 w-auto">
+                            <img src="/images/brand/bandhan-logo-240.png" alt="রক্তদূত — হোম" width="240" height="119" class="h-14 w-auto">
                         </picture>
                     </a>
 

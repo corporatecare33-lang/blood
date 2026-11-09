@@ -47,7 +47,7 @@
 @source '../../app/**/*.php';
 
 /*
- | BloodBond design tokens — see CLAUDE.md §5. Visual direction: docs/reference/mobile-app-mockup.jpg
+ | RoktoDoot design tokens — see CLAUDE.md §5. Visual direction: docs/reference/mobile-app-mockup.jpg
  | (red app bar, blush canvas, white rounded cards, red-outlined group chips).
  | Semantic names follow shadcn (primary, muted, border, ring…).
  */

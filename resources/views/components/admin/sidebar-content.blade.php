@@ -8,7 +8,7 @@
             <x-lucide-droplet class="size-4 fill-white" />
         </span>
         <span class="min-w-0 leading-tight lg:collapsed:sr-only">
-            <span class="block truncate font-display text-[1.0625rem] font-bold">ব্লাডবন্ড</span>
+            <span class="block truncate font-display text-[1.0625rem] font-bold">রক্তদূত</span>
             <span class="block truncate text-xs text-muted-foreground">অ্যাডমিন প্যানেল</span>
         </span>
     </a>

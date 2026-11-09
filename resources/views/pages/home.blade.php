@@ -104,7 +104,7 @@
         <ol data-reveal-stagger class="mt-3 grid gap-3 md:grid-cols-3">
             @foreach ([
                 ['ডোনার একবার নিবন্ধন করেন', 'নাম, মোবাইল, রক্তের গ্রুপ, এলাকা আর শেষ রক্তদানের তারিখ — দুই মিনিটের কাজ।'],
-                ['গ্রুপ ও জেলা দিয়ে খোঁজা', 'ব্লাডবন্ড শুধু তাঁদেরই দেখায় যাঁরা প্রস্তুত এবং গত ৯০ দিনে রক্ত দেননি।'],
+                ['গ্রুপ ও জেলা দিয়ে খোঁজা', 'রক্তদূত শুধু তাঁদেরই দেখায় যাঁরা প্রস্তুত এবং গত ৯০ দিনে রক্ত দেননি।'],
                 ['সরাসরি কল বা এসএমএস', 'হাসপাতাল আর সময় ঠিক করুন। শর্ত অনুযায়ী ডোনারের যাতায়াত ও খাবারের খরচ রোগীর পরিবার দেবে।'],
             ] as $i => [$title, $text])
                 <li class="card flex gap-4 p-5">
@@ -118,16 +118,16 @@
         </ol>
     </section>
 
-    {{-- Conditions + what is BloodBond --}}
-    <section class="container-page mt-12 grid gap-10 lg:grid-cols-12" aria-label="শর্তসমূহ ও ব্লাডবন্ড সম্পর্কে">
+    {{-- Conditions + what is RoktoDoot --}}
+    <section class="container-page mt-12 grid gap-10 lg:grid-cols-12" aria-label="শর্তসমূহ ও রক্তদূত সম্পর্কে">
         <x-site.conditions class="lg:col-span-7" />
 
         <div data-reveal class="flex flex-col lg:col-span-5">
-            <h2 class="text-2xl font-bold md:text-3xl">ব্লাডবন্ড কী?</h2>
+            <h2 class="text-2xl font-bold md:text-3xl">রক্তদূত কী?</h2>
             <p class="mt-1 text-ink-soft">স্বেচ্ছায় রক্তদাতাদের সংগঠন</p>
             <div class="card mt-4 flex flex-1 flex-col overflow-hidden">
                 <div class="p-5 sm:p-6">
-                    <p class="text-[1.0625rem] leading-relaxed">ব্লাডবন্ড একটি স্বয়ংক্রিয় রক্তসেবা — রক্তপ্রার্থীকে মুহূর্তেই স্বেচ্ছাসেবী রক্তদাতার সাথে যুক্ত করে। সবার জন্য সবসময় বিনামূল্যে।</p>
+                    <p class="text-[1.0625rem] leading-relaxed">রক্তদূত একটি স্বয়ংক্রিয় রক্তসেবা — রক্তপ্রার্থীকে মুহূর্তেই স্বেচ্ছাসেবী রক্তদাতার সাথে যুক্ত করে। সবার জন্য সবসময় বিনামূল্যে।</p>
                     @php($whyIcons = ['bot', 'hand-coins', 'clock-4', 'shield-check'])
                     <ul class="mt-5 grid grid-cols-2 gap-2.5">
                         @foreach (config('bandhan.why') as $i => $point)
@@ -143,7 +143,7 @@
                     <p class="font-display text-[1.0625rem] leading-snug font-semibold text-crimson-deep">রক্ত দিন জীবন বাঁচান।<br>রক্ত নিন নিজে বাঁচুন।</p>
                 </div>
                 <a href="{{ route('about') }}" wire:navigate class="flex items-center justify-between gap-2 border-t border-border px-5 py-3.5 font-semibold text-crimson transition-colors hover:bg-blush sm:px-6">
-                    ব্লাডবন্ড সম্পর্কে আরও জানুন
+                    রক্তদূত সম্পর্কে আরও জানুন
                     <x-lucide-chevron-right class="size-5" aria-hidden="true" />
                 </a>
             </div>

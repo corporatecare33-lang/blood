@@ -13,14 +13,14 @@
     <meta name="robots" content="{{ $seo->index ? 'index, follow' : 'noindex, nofollow' }}">
 
     <meta property="og:type" content="{{ $seo->type }}">
-    <meta property="og:site_name" content="BloodBond">
+    <meta property="og:site_name" content="RoktoDoot">
     <meta property="og:title" content="{{ $seo->fullTitle() }}">
     <meta property="og:description" content="{{ $seo->description }}">
     <meta property="og:url" content="{{ $seo->canonicalUrl() }}">
     <meta property="og:image" content="{{ $seo->imageUrl() }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="ব্লাডবন্ড লোগো — পানিতে ছড়িয়ে পড়া লাল রঙের পাশে">
+    <meta property="og:image:alt" content="রক্তদূত লোগো — পানিতে ছড়িয়ে পড়া লাল রঙের পাশে">
     <meta property="og:locale" content="bn_BD">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $seo->fullTitle() }}">

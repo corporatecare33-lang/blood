@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         Seo::make()
             ->title('ডোনার রেজিস্ট্রেশন')
-            ->description('স্বেচ্ছাসেবী রক্তদাতা হিসেবে ব্লাডবন্ডে যুক্ত হন। রক্তের গ্রুপ ও এলাকা দিয়ে নিবন্ধন করুন, যাতে প্রয়োজনের সময় কাছের মানুষ আপনাকে খুঁজে পান।')
+            ->description('স্বেচ্ছাসেবী রক্তদাতা হিসেবে রক্তদূতে যুক্ত হন। রক্তের গ্রুপ ও এলাকা দিয়ে নিবন্ধন করুন, যাতে প্রয়োজনের সময় কাছের মানুষ আপনাকে খুঁজে পান।')
             ->breadcrumbs(['ডোনার রেজিস্ট্রেশন' => route('register')]);
 
         return view('pages.auth.register');
@@ -24,7 +24,7 @@ class AuthController extends Controller
     {
         Seo::make()
             ->title('লগইন')
-            ->description('মোবাইল নম্বর দিয়ে ব্লাডবন্ডে লগইন করুন — ডোনার খুঁজুন ও আপনার প্রোফাইল ঠিক রাখুন।')
+            ->description('মোবাইল নম্বর দিয়ে রক্তদূতে লগইন করুন — ডোনার খুঁজুন ও আপনার প্রোফাইল ঠিক রাখুন।')
             ->breadcrumbs(['লগইন' => route('login')]);
 
         return view('pages.auth.login');
@@ -34,7 +34,7 @@ class AuthController extends Controller
     {
         Seo::make()
             ->title('পাসওয়ার্ড রিসেট')
-            ->description('মোবাইলে পাঠানো এককালীন কোড দিয়ে ব্লাডবন্ডের পাসওয়ার্ড রিসেট করুন।')
+            ->description('মোবাইলে পাঠানো এককালীন কোড দিয়ে রক্তদূতের পাসওয়ার্ড রিসেট করুন।')
             ->breadcrumbs(['লগইন' => route('login'), 'পাসওয়ার্ড রিসেট' => route('password.request')])
             ->noindex();
 
@@ -43,7 +43,7 @@ class AuthController extends Controller
 
     public function account(): View
     {
-        Seo::make()->title('আমার প্রোফাইল')->description('আপনার ব্লাডবন্ড ডোনার প্রোফাইল পরিচালনা করুন।')->noindex();
+        Seo::make()->title('আমার প্রোফাইল')->description('আপনার রক্তদূত ডোনার প্রোফাইল পরিচালনা করুন।')->noindex();
 
         return view('pages.auth.account');
     }
