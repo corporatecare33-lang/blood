@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GalleryItem;
+use App\Models\Post;
 use Illuminate\Http\Response;
 
 class SeoFileController extends Controller
@@ -16,6 +17,7 @@ class SeoFileController extends Controller
         'requests.create' => ['monthly', '0.7'],
         'about' => ['monthly', '0.6'],
         'tips' => ['monthly', '0.6'],
+        'blog.index' => ['weekly', '0.6'],
         'gallery' => ['weekly', '0.5'],
         'login' => ['yearly', '0.3'],
         'terms' => ['yearly', '0.2'],
@@ -26,7 +28,13 @@ class SeoFileController extends Controller
     {
         $galleryUpdated = GalleryItem::max('updated_at');
 
-        $xml = view('seo.sitemap', ['pages' => self::PAGES, 'galleryUpdated' => $galleryUpdated])->render();
+        $posts = Post::latestPublished()->get(['slug', 'updated_at']);
+
+        $xml = view('seo.sitemap', [
+            'pages' => self::PAGES,
+            'galleryUpdated' => $galleryUpdated,
+            'posts' => $posts,
+        ])->render();
 
         return response($xml, 200, ['Content-Type' => 'application/xml; charset=UTF-8'])
             ->setPublic()->setMaxAge(3600);

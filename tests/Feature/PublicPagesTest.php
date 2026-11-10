@@ -21,7 +21,7 @@ class PublicPagesTest extends TestCase
     public static function pages(): array
     {
         return [
-            ['/'], ['/about'], ['/gallery'], ['/tips'], ['/terms'], ['/privacy'],
+            ['/'], ['/about'], ['/blog'], ['/gallery'], ['/tips'], ['/terms'], ['/privacy'],
             ['/blood-requests'], ['/blood-requests/new'], ['/search-donors'],
             ['/register'], ['/login'], ['/forgot-password'],
         ];

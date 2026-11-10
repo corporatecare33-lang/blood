@@ -7,6 +7,7 @@
         ['ডোনার খুঁজুন', route('donors.search'), 'search', false],
         ['রক্তের অনুরোধ', route('requests.index'), 'clipboard-list', false],
         ['ডোনার টিপস', route('tips'), 'heart-pulse', false],
+        ['ব্লগ', route('blog.index'), 'newspaper', false],
         ['গ্যালারি', route('gallery'), 'image', false],
         ['আমাদের সম্পর্কে', route('about'), 'info', false],
     ];
@@ -49,7 +50,7 @@
         </a>
         <nav aria-label="প্রধান মেনু" class="ml-auto">
             <ul class="flex items-center gap-1">
-                @foreach (array_slice($links, 1, 5) as [$label, $href])
+                @foreach (array_slice($links, 1) as [$label, $href])
                     <li>
                         <a href="{{ $href }}" wire:navigate wire:current="!bg-white/15 !text-white"
                            class="rounded-lg px-3 py-2 text-[0.9375rem] font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white">{{ $label }}</a>

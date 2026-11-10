@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BloodRequestController;
 use App\Http\Controllers\DonorSearchController;
 use App\Http\Controllers\PageController;
@@ -16,6 +17,9 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/terms', 'terms')->name('terms');
     Route::get('/privacy', 'privacy')->name('privacy');
 });
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/blood-requests', [BloodRequestController::class, 'index'])->name('requests.index');
 Route::get('/blood-requests/new', [BloodRequestController::class, 'create'])->name('requests.create');
@@ -43,7 +47,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::view('/donors', 'pages.admin.donors')->name('donors');
         Route::view('/blood-requests', 'pages.admin.requests')->name('requests');
         Route::view('/thanas', 'pages.admin.thanas')->name('thanas');
+        Route::view('/blog', 'pages.admin.posts')->name('posts');
+        Route::view('/blog/new', 'pages.admin.post-editor')->name('posts.create');
+        Route::view('/blog/{post}/edit', 'pages.admin.post-editor')->whereNumber('post')->name('posts.edit');
         Route::view('/gallery', 'pages.admin.gallery')->name('gallery');
+        Route::view('/videos', 'pages.admin.videos')->name('videos');
         Route::view('/about', 'pages.admin.about')->name('about');
         Route::view('/settings', 'pages.admin.settings')->name('settings');
         Route::view('/profile', 'pages.admin.profile')->name('profile');

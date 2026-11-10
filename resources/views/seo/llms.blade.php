@@ -14,9 +14,19 @@ Sponsor: {{ \App\Support\Site::sponsor() }}
 - [Register as donor]({{ route('register') }}): donor sign-up
 - [About]({{ route('about') }}): what RoktoDoot is and how it works
 - [Donor tips]({{ route('tips') }}): eligibility and before/after donation guidance (general, based on WHO donor selection criteria)
+- [Blog]({{ route('blog.index') }}): news, blood donation camp reports and awareness articles (Bangla)
 - [Terms of use]({{ route('terms') }})
 - [Privacy policy]({{ route('privacy') }})
 
+@php($llmsPosts = \App\Models\Post::latestPublished()->limit(10)->get())
+@if ($llmsPosts->isNotEmpty())
+## Recent blog posts
+
+@foreach ($llmsPosts as $post)
+- [{{ $post->title }}]({{ $post->url() }}): {{ $post->summary(140) }}
+@endforeach
+
+@endif
 ## Conditions for donors (আমাদের শর্তসমূহ)
 
 @foreach (\App\Support\Site::conditions() as $condition)

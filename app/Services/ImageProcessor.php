@@ -12,7 +12,11 @@ use RuntimeException;
  */
 class ImageProcessor
 {
-    /** @return array{image_path: string, thumb_path: string, width: int, height: int} */
+    /**
+     * width/height are the thumbnail's; large_width/large_height the full-size file's.
+     *
+     * @return array{image_path: string, thumb_path: string, width: int, height: int, large_width: int, large_height: int}
+     */
     public function storeGalleryImage(string $sourcePath, string $directory = 'gallery'): array
     {
         $info = getimagesize($sourcePath);
@@ -41,6 +45,8 @@ class ImageProcessor
             'thumb_path' => $thumbPath,
             'width' => $thumb['width'],
             'height' => $thumb['height'],
+            'large_width' => $large['width'],
+            'large_height' => $large['height'],
         ];
     }
 

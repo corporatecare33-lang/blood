@@ -18,9 +18,13 @@
     <meta property="og:description" content="{{ $seo->description }}">
     <meta property="og:url" content="{{ $seo->canonicalUrl() }}">
     <meta property="og:image" content="{{ $seo->imageUrl() }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="রক্তদূত লোগো — পানিতে ছড়িয়ে পড়া লাল রঙের পাশে">
+    <meta property="og:image:width" content="{{ $seo->imageSize[0] }}">
+    <meta property="og:image:height" content="{{ $seo->imageSize[1] }}">
+    <meta property="og:image:alt" content="{{ $seo->imageAlt }}">
+    @if ($seo->publishedTime)
+    <meta property="article:published_time" content="{{ $seo->publishedTime }}">
+    <meta property="article:modified_time" content="{{ $seo->modifiedTime }}">
+    @endif
     <meta property="og:locale" content="bn_BD">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $seo->fullTitle() }}">

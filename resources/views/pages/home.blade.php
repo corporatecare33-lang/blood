@@ -150,6 +150,29 @@
         </div>
     </section>
 
+    {{-- Latest blog posts (the reference site's "Latest News"); hidden until something is published. --}}
+    @if ($posts->isNotEmpty())
+        <section class="container-page mt-12" aria-labelledby="news-heading">
+            <div class="flex items-end justify-between gap-4">
+                <div>
+                    <h2 id="news-heading" data-reveal class="text-2xl font-bold md:text-3xl">সর্বশেষ খবর</h2>
+                    <p data-reveal class="mt-1 text-ink-soft">রক্তদান কর্মসূচি, সংগঠনের খবর আর সচেতনতামূলক লেখা</p>
+                </div>
+                <a href="{{ route('blog.index') }}" wire:navigate class="shrink-0 text-[0.9375rem] font-semibold text-crimson hover:underline">সব লেখা</a>
+            </div>
+            <div data-reveal-stagger class="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:gap-5">
+                @foreach ($posts as $post)
+                    {{-- Two columns on small tablets: drop the third card rather than leave it alone on a row. --}}
+                    <x-site.post-card :post="$post" layout="row-mobile" @class(['sm:max-md:hidden' => $loop->index === 2]) />
+                @endforeach
+            </div>
+        </section>
+    @elseif (auth()->user()?->isAdmin())
+        <x-site.admin-placeholder heading="সর্বশেষ খবর" id="news-heading" icon="newspaper" :href="route('admin.posts.create')" action="প্রথম লেখা লিখুন" action-icon="square-pen">
+            ব্লগে লেখা প্রকাশ করলেই এখানে সর্বশেষ ৩টি লেখা দেখাবে। তার আগে সাধারণ দর্শকেরা এই অংশটি দেখবেন না।
+        </x-site.admin-placeholder>
+    @endif
+
     {{-- Join --}}
     <section class="container-page mt-12" aria-labelledby="join-heading">
         <div data-reveal class="flex flex-col gap-5 rounded-xl bg-ink p-6 text-white sm:p-8 md:flex-row md:items-center md:justify-between">
@@ -162,4 +185,43 @@
             </div>
         </div>
     </section>
+
+    {{-- Video gallery, right above the footer (admin: /admin/videos). The YouTube player loads only after a tap. --}}
+    @if ($videos->isNotEmpty())
+        <section class="container-page mt-12" aria-labelledby="videos-heading">
+            <div class="text-center">
+                <h2 id="videos-heading" data-reveal class="text-2xl font-bold md:text-3xl">ভিডিও গ্যালারি</h2>
+                <p data-reveal class="mt-1 text-ink-soft">রক্তদান কর্মসূচি ও সচেতনতামূলক ভিডিও</p>
+            </div>
+            {{-- One video: centred at a comfortable width instead of half a two-column grid. --}}
+            <ul data-reveal-stagger @class(['mt-5 grid gap-4 lg:gap-5', 'sm:grid-cols-2' => $videos->count() > 1, 'mx-auto max-w-3xl' => $videos->count() === 1])>
+                @foreach ($videos as $video)
+                    <li x-data="{ playing: false }" class="relative aspect-video overflow-hidden rounded-xl bg-ink shadow-card">
+                        <template x-if="playing">
+                            <iframe src="{{ $video->embedUrl() }}" title="{{ $video->title }}" class="absolute inset-0 size-full"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </template>
+                        <button type="button" x-show="! playing" x-on:click="playing = true" class="group absolute inset-0 block size-full text-left">
+                            <img src="{{ $video->thumbUrl() }}" alt="" width="480" height="360" loading="lazy" decoding="async"
+                                 class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+                            <span class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/80 to-transparent" aria-hidden="true"></span>
+                            <span class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+                                <span class="flex size-12 items-center justify-center rounded-full bg-crimson text-white shadow-panel transition-transform duration-200 group-hover:scale-110 sm:size-16">
+                                    <x-lucide-play class="ml-1 size-5 fill-white sm:size-7" />
+                                </span>
+                            </span>
+                            <span class="absolute inset-x-0 bottom-0 line-clamp-2 px-4 pb-3 text-[0.9375rem] font-semibold leading-snug text-white sm:text-base">
+                                <span class="sr-only">ভিডিও চালান: </span>{{ $video->title }}
+                            </span>
+                        </button>
+                    </li>
+                @endforeach
+            </ul>
+        </section>
+    @elseif (auth()->user()?->isAdmin())
+        <x-site.admin-placeholder heading="ভিডিও গ্যালারি" id="videos-heading" icon="square-play" :href="route('admin.videos')" action="ভিডিও যোগ করুন">
+            অ্যাডমিন প্যানেলের "ভিডিও" পাতায় YouTube লিংক দিলেই ভিডিওটি এখানে দেখাবে। তার আগে সাধারণ দর্শকেরা এই অংশটি দেখবেন না।
+        </x-site.admin-placeholder>
+    @endif
 </x-layouts.app>

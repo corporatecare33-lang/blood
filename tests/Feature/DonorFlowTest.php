@@ -172,7 +172,7 @@ class DonorFlowTest extends TestCase
         $this->flushSession();
 
         $admin = User::factory()->create(['role' => Role::Admin]);
-        foreach (['/admin', '/admin?range=7', '/admin?range=90', '/admin/donors', '/admin/blood-requests', '/admin/thanas', '/admin/gallery', '/admin/about', '/admin/settings', '/admin/profile'] as $path) {
+        foreach (['/admin', '/admin?range=7', '/admin?range=90', '/admin/donors', '/admin/blood-requests', '/admin/thanas', '/admin/blog', '/admin/blog/new', '/admin/gallery', '/admin/videos', '/admin/about', '/admin/settings', '/admin/profile'] as $path) {
             $this->actingAs($admin)->get($path)->assertOk();
         }
         $this->actingAs($admin)->get('/admin/admins')->assertForbidden();

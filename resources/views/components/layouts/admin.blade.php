@@ -18,7 +18,9 @@
             ['রক্তের অনুরোধ', 'admin.requests', 'clipboard-list', $openRequests],
         ],
         'কনটেন্ট' => [
+            ['ব্লগ', 'admin.posts', 'newspaper', null],
             ['গ্যালারি', 'admin.gallery', 'images', null],
+            ['ভিডিও', 'admin.videos', 'square-play', null],
             ['আমাদের সম্পর্কে', 'admin.about', 'file-text', null],
             ['থানা', 'admin.thanas', 'map-pin', null],
         ],

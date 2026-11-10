@@ -18,6 +18,16 @@ class Seo
 
     public string $image = '/images/og/roktodoot-share.jpg';
 
+    /** @var array{int, int} */
+    public array $imageSize = [1200, 630];
+
+    public string $imageAlt = 'রক্তদূত লোগো — পানিতে ছড়িয়ে পড়া লাল রঙের পাশে';
+
+    /** og:type article: published / modified ISO-8601 times. */
+    public ?string $publishedTime = null;
+
+    public ?string $modifiedTime = null;
+
     public string $type = 'website';
 
     public bool $index = true;
@@ -54,6 +64,25 @@ class Seo
     public function canonical(string $url): self
     {
         $this->canonical = $url;
+
+        return $this;
+    }
+
+    /** Share image for this page; $url may be a path or an absolute URL. */
+    public function image(string $url, int $width, int $height, string $alt): self
+    {
+        $this->image = $url;
+        $this->imageSize = [$width, $height];
+        $this->imageAlt = $alt;
+
+        return $this;
+    }
+
+    public function article(\DateTimeInterface $published, \DateTimeInterface $modified): self
+    {
+        $this->type = 'article';
+        $this->publishedTime = $published->format(DATE_ATOM);
+        $this->modifiedTime = $modified->format(DATE_ATOM);
 
         return $this;
     }

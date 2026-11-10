@@ -30,7 +30,7 @@ ideas (public blood-request board, tips, terms/privacy). Do not copy its design.
 | Sponsor | TohsinBD — **name only, plain text, no link** (owner, 2026-11-09). Removed from the footer (owner, 2026-11-09); now only in `llms.txt`. | owner |
 | Footer credit | "Designed and Developed By Digital Webars" → https://digitalwebars.com/ (owner, 2026-11-09) | owner |
 | Android app | **Removed at the owner's request (2026-11-09).** Do not link the APK. | owner |
-| External links | **None**, except the footer credit link above. Owner rule (2026-11-09): the public site links to no other website. `mailto:` for the contact email is allowed. | owner |
+| External links | **None**, except the footer credit link above. Owner rule (2026-11-09): the public site links to no other website. `mailto:` for the contact email is allowed. Exception (owner, 2026-11-10): admin-added YouTube videos are **embedded** in the home "ভিডিও গ্যালারি" (thumbnail from i.ytimg.com, player from youtube-nocookie.com after a tap) — embeds only, never an `<a>` to YouTube on the public site. | owner |
 | iPhone app | **Not published.** Source links to a dummy App Store id (`id1234567890`). Do NOT link it. | `data/data.json` |
 | Hero claim | "Voluntary blood donation-based platform to connect blood searchers with donors" | hero |
 | Claim | Connects donors and searchers using SMS; find by blood type, location, donor history | hero |
@@ -69,8 +69,10 @@ haemoglobin ≥ 12.0 g/dL (women) / ≥ 13.0 g/dL (men), whole-blood interval
 | `#/login` | `/login` | mobile number + password |
 | "Forgot password" | `/forgot-password` (2 steps in one Livewire component) | OTP over SMS (original had GetOTP/TokenVerify) |
 | `#/account-update` | `/account` | profile, last donation, availability |
-| `#/admin-*` | `/admin/*` | own sign-in at `/admin/login` (admins only); dashboard, donors, blood requests, gallery, about, thanas, settings, profile, admins |
+| `#/admin-*` | `/admin/*` | own sign-in at `/admin/login` (admins only); dashboard, donors, blood requests, blog, gallery, videos, about, thanas, settings, profile, admins |
 | — | `/tips`, `/terms`, `/privacy` | new, real content |
+| — (badhan.org "Latest News" idea) | `/blog`, `/blog/{slug}` | DB-driven blog (`posts`), written at `/admin/blog`; home shows the latest 3 under "সর্বশেষ খবর" only when posts exist. Three evergreen guides ship via migration `2026_11_10_000010_add_first_blog_posts` (covers in `public/images/blog/`, rendered from brand type — paths starting `images/` are served from `public/` and never deleted). Never invent news or events: activity reports need real details and photos from the owner. |
+| — (owner request, 2026-11-10) | home "ভিডিও গ্যালারি" (last section, right above the footer) | DB-driven (`videos`), managed at `/admin/videos` by pasting a YouTube link; title auto-filled via YouTube oEmbed. Hidden when no video is published. No videos are seeded. |
 
 Original API endpoints (reference only, not called): `DonerReg/{CreateDonerReg,userlogin,Search,GetOTP,TokenVerify}`,
 `Admin/{Login,Search}`, `Thana/*`, `Gallery/*`, `AboutUs/*`.
@@ -145,7 +147,12 @@ segment). Validation messages: `lang/bn/validation.php`; `APP_LOCALE=bn`.
   district_id, contact_name, contact_mobile, note?, status (open|fulfilled|closed),
   user_id?`.
 - `gallery_items` — `title, caption?, image_path, width, height, sort, is_published`.
+- `videos` — `title, youtube_id (11 chars; parsed from any YouTube link by Video::idFrom), sort, is_published`.
 - `about_sections` — `title, body, sort`.
+- `posts` — `title, slug (unique; Bangla letters kept via Post::slugFrom), excerpt?, body (Markdown, raw HTML escaped,
+  external links get rel=nofollow noopener), cover_path?/cover_thumb_path? (WebP via ImageProcessor, dir `blog/`),
+  cover_width/height (large file), cover_alt?, is_published, published_at, user_id?`. Public = `Post::published()`
+  (is_published and published_at ≤ now; a future date = scheduled). Admins can preview drafts at the public URL (noindex).
 - `otp_codes` — `mobile, code_hash, purpose, expires_at, attempts`.
 - `site_settings` — `key, value (json)`: admin overrides for the editable facts in
   `config/bandhan.php`. Read them only through `App\Support\Site` (`Site::email()`,

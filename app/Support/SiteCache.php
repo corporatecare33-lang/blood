@@ -7,8 +7,10 @@ use App\Models\BloodRequest;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\GalleryItem;
+use App\Models\Post;
 use App\Models\Thana;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
@@ -58,6 +60,19 @@ class SiteCache
             fn () => GalleryItem::where('is_published', true)->orderBy('sort')->latest()->get());
     }
 
+    public static function videos(): Collection
+    {
+        return Cache::remember('content.videos', self::DAY,
+            fn () => Video::where('is_published', true)->orderBy('sort')->latest()->get());
+    }
+
+    /** Short TTL so a scheduled post appears within minutes of its publish time. */
+    public static function latestPosts(int $limit = 3): Collection
+    {
+        return Cache::remember("posts.latest.$limit", 300,
+            fn () => Post::latestPublished()->limit($limit)->get());
+    }
+
     public static function latestRequests(int $limit = 6): Collection
     {
         return Cache::remember("requests.latest.$limit", 120,
@@ -86,6 +101,18 @@ class SiteCache
     public static function forgetGallery(): void
     {
         Cache::forget('content.gallery');
+    }
+
+    public static function forgetVideos(): void
+    {
+        Cache::forget('content.videos');
+    }
+
+    public static function forgetPosts(): void
+    {
+        foreach ([3, 4] as $limit) {
+            Cache::forget("posts.latest.$limit");
+        }
     }
 
     public static function forgetRequests(): void
