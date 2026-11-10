@@ -17,7 +17,7 @@
         @endunless
 
         <div class="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-10">
-            <article class="card overflow-hidden lg:col-span-8" aria-labelledby="post-title">
+            <article class="card -mx-4 overflow-hidden rounded-none sm:mx-0 sm:rounded-xl lg:col-span-8" aria-labelledby="post-title">
                 <header data-intro class="px-5 pt-6 pb-5 sm:px-8 sm:pt-8 lg:px-10 lg:pt-10">
                     <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-soft">
                         @if ($post->published_at)

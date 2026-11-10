@@ -160,10 +160,11 @@
                 </div>
                 <a href="{{ route('blog.index') }}" wire:navigate class="shrink-0 text-[0.9375rem] font-semibold text-crimson hover:underline">সব লেখা</a>
             </div>
-            <div data-reveal-stagger class="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:gap-5">
+            {{-- Phones: a swipeable row of full cards (the next one peeks in); grid from `sm` up. --}}
+            <div data-reveal-stagger class="-mx-4 mt-3 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pt-1 pb-4 [scrollbar-width:none] sm:mx-0 sm:mt-4 sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:p-0 md:grid-cols-3 lg:gap-5 [&::-webkit-scrollbar]:hidden">
                 @foreach ($posts as $post)
                     {{-- Two columns on small tablets: drop the third card rather than leave it alone on a row. --}}
-                    <x-site.post-card :post="$post" layout="row-mobile" @class(['sm:max-md:hidden' => $loop->index === 2]) />
+                    <x-site.post-card :post="$post" @class(['w-[82%] max-w-80 shrink-0 snap-start sm:w-auto sm:max-w-none', 'sm:max-md:hidden' => $loop->index === 2]) />
                 @endforeach
             </div>
         </section>

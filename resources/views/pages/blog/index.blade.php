@@ -43,7 +43,7 @@
                             <span aria-hidden="true">·</span>
                             <span>{{ \App\Support\Bn::num($featured->readingMinutes()) }} মিনিটে পড়া</span>
                         </p>
-                        <h2 class="mt-3 text-2xl leading-tight font-bold md:text-[1.75rem] lg:text-3xl">
+                        <h2 class="mt-3 text-[1.375rem] leading-tight font-bold sm:text-2xl md:text-[1.75rem] lg:text-3xl">
                             <a href="{{ $featured->url() }}" wire:navigate class="transition-colors after:absolute after:inset-0 focus-visible:outline-none group-hover:text-crimson">{{ $featured->title }}</a>
                         </h2>
                         <p class="mt-3 line-clamp-4 text-ink-soft md:text-[1.0625rem]">{{ $featured->summary(220) }}</p>
