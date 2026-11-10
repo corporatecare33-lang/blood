@@ -17,6 +17,7 @@ class PageController extends Controller
         return view('pages.home', [
             'requests' => SiteCache::latestRequests(3),
             'posts' => SiteCache::latestPosts(3),
+            'photos' => SiteCache::gallery()->take(6),
             'videos' => SiteCache::videos(),
             'donorCount' => SiteCache::donorCount(),
         ]);

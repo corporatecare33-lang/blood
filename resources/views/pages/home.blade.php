@@ -186,6 +186,46 @@
         </div>
     </section>
 
+    {{-- Photo gallery (admin: /admin/gallery): the first six, the first one large once there are enough to fill the grid. --}}
+    @if ($photos->isNotEmpty())
+        @php($featured = $photos->count() === 6)
+        <section class="container-page mt-12" aria-labelledby="photos-heading">
+            <div class="text-center">
+                <h2 id="photos-heading" data-reveal class="text-2xl font-bold md:text-3xl">ছবির গ্যালারি</h2>
+                <p data-reveal class="mt-1 text-ink-soft">রক্তদান আর স্বেচ্ছাসেবার কিছু মুহূর্ত</p>
+            </div>
+            <ul data-reveal-stagger class="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-4">
+                @foreach ($photos as $photo)
+                    @php($big = $featured && $loop->first)
+                    {{-- Two columns on phones: the big tile takes a row, so drop the sixth rather than leave it alone. --}}
+                    <li @class(['col-span-2 md:row-span-2' => $big, 'max-md:hidden' => $featured && $loop->last])>
+                        <a href="{{ route('gallery') }}" wire:navigate @class([
+                            'group relative block aspect-video w-full overflow-hidden rounded-xl bg-muted shadow-card',
+                            'md:aspect-auto md:h-full' => $big,
+                        ])>
+                            <img src="{{ $photo->thumbUrl() }}" alt="{{ $photo->title }}" width="{{ $photo->width }}" height="{{ $photo->height }}"
+                                 @if ($big) srcset="{{ $photo->thumbUrl() }} 720w, {{ $photo->imageUrl() }} 1600w" sizes="(min-width: 768px) 66vw, 100vw" @endif
+                                 loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+                            <span class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/75 to-transparent" aria-hidden="true"></span>
+                            <span @class([
+                                'absolute inset-x-0 bottom-0 line-clamp-2 px-3 pb-2.5 text-sm font-semibold leading-snug text-white',
+                                'sm:px-4 sm:pb-3 sm:text-base' => $big,
+                                'max-sm:hidden' => ! $big,
+                            ])>{{ $photo->title }}</span>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+            <div data-reveal class="mt-5 text-center">
+                <x-ui.button :href="route('gallery')" variant="outline"><x-lucide-images aria-hidden="true" />সব ছবি দেখুন</x-ui.button>
+            </div>
+        </section>
+    @elseif (auth()->user()?->isAdmin())
+        <x-site.admin-placeholder heading="ছবির গ্যালারি" id="photos-heading" icon="images" :href="route('admin.gallery')" action="ছবি যোগ করুন">
+            অ্যাডমিন প্যানেলের "গ্যালারি" পাতায় ছবি আপলোড করলেই প্রথম ৬টি ছবি এখানে দেখাবে। তার আগে সাধারণ দর্শকেরা এই অংশটি দেখবেন না।
+        </x-site.admin-placeholder>
+    @endif
+
     {{-- Video gallery, right above the footer (admin: /admin/videos). The YouTube player loads only after a tap. --}}
     @if ($videos->isNotEmpty())
         <section class="container-page mt-12" aria-labelledby="videos-heading">

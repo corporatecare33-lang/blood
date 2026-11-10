@@ -62,7 +62,7 @@ haemoglobin ≥ 12.0 g/dL (women) / ≥ 13.0 g/dL (men), whole-blood interval
 |---|---|---|
 | `#/` | `/` | home |
 | `#/about` | `/about` | About sections are DB-editable (`about_sections`) |
-| `#/gallery` | `/gallery` | DB-driven, admin upload; empty state when none |
+| `#/gallery` | `/gallery` | DB-driven, admin upload; empty state when none. 10 owner-supplied photos ship via migration `2026_11_10_000020_add_first_gallery_photos` (WebP in `public/images/gallery/`; `images/` paths are served from `public/` and never deleted). Titles describe the scene only — no places, dates or events. Home shows the first 6 under "ছবির গ্যালারি" (right before the video gallery), hidden when none are published. |
 | `#/search-donors` | `/search-donors` | **auth required** (as original) — protects donor phone numbers |
 | `#/blood-request` | `/blood-requests`, `/blood-requests/new` | public board + post form |
 | `#/register` | `/register` | full donor form (fields in §6) |
